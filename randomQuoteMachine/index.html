@@ -17,13 +17,26 @@
     <![endif]-->
 
     <link rel="stylesheet" href="css/styles.css">
+    <script src="https://use.fontawesome.com/d53647ce18.js"></script>
 </head>
 <body>
-    <button onclick="randBGColor()" type="button" name="button">color test</button>
-    <script src="js/quoter.js" charset="utf-8"></script>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-3" id="quote-container">
+                <a href="https://twitter.com/share" class="twitter-share-button" data-size="small" data-url="" data-text="It is by going down into the abyss that we recover the treasures of life. Where you stumble, there lies your treasure." data-hashtags="jc" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                <blockquote>
+                    <p class="" id="quote-text">It is by going down into the abyss that we recover the treasures of life. Where you stumble, there lies your treasure.</p>
+                    <footer class="" id="quote-author">Joseph Campbell</footer>
+                </blockquote>
+                <button class="btn btn-default" type="button" name="newQuote" id="newQuote"><i class="fa fa-refresh fa-lg"></i></button>
+            </div>
+        </div>
+    </div>
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="js/quoter.js" charset="utf-8"></script>
 </body>
 </html>

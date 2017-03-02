@@ -1,3 +1,20 @@
 body {
-    background-color: orange;
+    margin-top: 60px;
+    background-color: lightgray;
+}
+#quote-container {
+    background-color: #fff;
+    border-radius: 3px;
+    padding: 20px;
+    color: #000;
+}
+.quote {
+    padding: 20px 0;
+}
+#tweet {
+    background-color: rgb(29, 161, 243);
+    color: white;
+}
+blockquote {
+    border: none;
 }
