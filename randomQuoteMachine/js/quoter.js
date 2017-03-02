@@ -14,6 +14,7 @@ var quotes = [
 ];
 
 $(document).ready(function() {
+    firstQuote();
     $("#newQuote").on("click", newQuote);
 });
 
@@ -21,19 +22,24 @@ function hashtagFromName(name) {
     var hash = name.split(' ').join('');
     return hash;
 }
+function firstQuote() {
+    var index = Math.floor(Math.random() * quotes.length);
+    var quote = quotes[index].quote;
+    var author = quotes[index].author;
+    var authorHash = hashtagFromName(author);
 
+    $('blockquote').html('<p>' + quote + '</p><footer>' + author + '</footer>');
+    $('#tweet').attr('href', 'https://twitter.com/intent/tweet?text="' + quote + '"&hashtags=' + authorHash);
+}
 function newQuote() {
     var index = Math.floor(Math.random() * quotes.length);
     var quote = quotes[index].quote;
     var author = quotes[index].author;
     var authorHash = hashtagFromName(author);
 
-    $('blockquote').toggle('slow', function(){
+    $('blockquote').fadeOut('slow', function(){
         $('blockquote').html('<p>' + quote + '</p><footer>' + author + '</footer>');
-        $('blockquote').toggle('slow');
+        $('blockquote').fadeIn('slow');
     }); // toggle display of quote divs
-
-    // $('#quote-text').html(quote);
-    // $('#quote-author').html(author);
-    $('#tweet').attr('href', 'https://twitter.com/intent/tweet?text=' + quote + '&hashtags=' + authorHash);
+    $('#tweet').attr('href', 'https://twitter.com/intent/tweet?text="' + quote + '"&hashtags=' + authorHash);
 }
