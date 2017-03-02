@@ -14,7 +14,7 @@ var quotes = [
 ];
 
 $(document).ready(function() {
-    $("#newQuote").on("click", newQuote));
+    $("#newQuote").on("click", newQuote);
 });
 
 function hashtagFromName(name) {
@@ -27,7 +27,13 @@ function newQuote() {
     var quote = quotes[index].quote;
     var author = quotes[index].author;
     var authorHash = hashtagFromName(author);
-    $('#quote-text').html(quote);
-    $('#quote-author').html(author);
+
+    $('blockquote').toggle('slow', function(){
+        $('blockquote').html('<p>' + quote + '</p><footer>' + author + '</footer>');
+        $('blockquote').toggle('slow');
+    }); // toggle display of quote divs
+
+    // $('#quote-text').html(quote);
+    // $('#quote-author').html(author);
     $('#tweet').attr('href', 'https://twitter.com/intent/tweet?text=' + quote + '&hashtags=' + authorHash);
 }
