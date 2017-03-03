@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $.ajaxSetup({ cache: false }); // disable cache for getJSON calls
     firstQuote();
-    $("#newQuote").on("click", newQuote);
+    $("#refreshBtn").on("click", newQuote);
 });
 
 function hashtagFromName(name) {
@@ -21,10 +21,13 @@ function firstQuote() {
 }
 function newQuote() {
     var quote, author, authorHash;
+    // change refresh button to spinner until ajax operation complete
+    $('#refreshBtn').html('<i class="fa fa-spinner fa-lg fa-spin"></i>');
     $.getJSON("http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&callback=", function(json) {
         quote = json[0].content;
         author = json[0].title;
         authorHash = hashtagFromName(author);
+        $('#refreshBtn').html('<i class="fa fa-refresh fa-lg"></i>');
         $('blockquote').fadeOut('slow', function(){
             $('blockquote').html(quote + '<footer>' + author + '</footer>');
             $('blockquote').fadeIn('slow');
