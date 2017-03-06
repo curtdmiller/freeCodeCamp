@@ -1,0 +1,19 @@
+body {
+    padding: 60px 0;
+    background-color: lightgray;
+}
+
+.weather {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 30px 20px 20px 20px;
+}
+
+#conditions {
+    margin-top: 15px;
+}
+
+#unit-btn-group {
+    display: none;
+    float: right;
+}
