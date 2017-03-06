@@ -17,3 +17,6 @@ body {
     display: none;
     float: right;
 }
+.alert {
+    display: none;
+}
