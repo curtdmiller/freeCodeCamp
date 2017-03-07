@@ -14,11 +14,6 @@
  * and its value, that was passed on as the second argument.
  */
 
-/*
-for keys.length,
-
-*/
-
 function whatIsInAName(collection, source) {
     // What's in a name?
     var arr = [];
