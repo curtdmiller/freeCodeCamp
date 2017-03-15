@@ -1,0 +1,13 @@
+body {
+    margin-top: 50px;
+}
+img.media-object {
+    height: 80px;
+    border-radius: 8px;
+}
+.checkboxes {
+    margin-bottom: 10px;
+}
+.alert {
+    margin: 10px;
+}
