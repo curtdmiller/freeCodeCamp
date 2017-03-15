@@ -42,9 +42,9 @@ $(document).ready(function(){
     });
     $('#errorBox').on('change',function(){
         if ($('#errorBox').is(':checked')) {
-            $('.alert').css('display', 'block');
+            $('#error-panel').css('display', 'block');
         } else {
-            $('.alert').css('display', 'none');
+            $('#error-panel').css('display', 'none');
         }
     });
 });
@@ -61,12 +61,13 @@ function createMedia(isStreaming, imgSrc, heading, status) {
     var body = document.createElement('p');
     var label = document.createElement('span');
 
-    panelDiv.classList = "panel panel-default";
+    panelDiv.classList.add('panel', 'panel-default');
     panelBody.className = "panel-body";
     mediaDiv.className = 'media';
+
     row.appendChild(panelDiv);
-    panelDiv.append(panelBody);
-    panelBody.append(mediaDiv);
+    panelDiv.appendChild(panelBody);
+    panelBody.appendChild(mediaDiv);
 
     mediaLeft.className = 'media-left';
     img.className = 'media-object';
@@ -77,12 +78,12 @@ function createMedia(isStreaming, imgSrc, heading, status) {
     head.className = 'media-heading';
     head.innerHTML = heading;
     if(isStreaming) {
-        panelDiv.classList += ' active'
-        label.classList = 'label label-success';
+        panelDiv.classList.add('active');
+        label.classList.add('label', 'label-success');
         label.innerHTML = 'Streaming'
     } else {
-        panelDiv.classList += ' offline'
-        label.classList = 'label label-danger';
+        panelDiv.classList.add('offline');
+        label.classList.add('label', 'label-danger')
         label.innerHTML = 'Offline'
     }
     body.appendChild(label);

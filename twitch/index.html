@@ -20,7 +20,8 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="text-center checkboxes">
+            <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+                <div class="checkboxes text-center">
                 <form>
                     <label>
                         <input type="checkbox" name="streaming" value="" id="streamBox" checked>
@@ -36,13 +37,19 @@
                     </label>
                 </form>
             </div>
+            </div>
         </div>
         <div class="row">
             <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2" id="media-list">
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2" id="error-list">
+            <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+                <div class="panel panel-default" id="error-panel">
+                    <div class="panel-body" id="error-list">
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
