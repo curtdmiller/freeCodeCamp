@@ -5,13 +5,7 @@
  */
 
 function booWho(bool) {
-    console.log((bool === true || bool === false) ? true : false);
     return (bool === true || bool === false) ? true : false;
-    // if (bool === true || bool === false) {
-    //     return true;
-    // } else {
-    //     return false;
-    // }
 }
 
 booWho(true); // should return true.
