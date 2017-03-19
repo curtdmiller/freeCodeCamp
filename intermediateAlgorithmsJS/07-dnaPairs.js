@@ -35,7 +35,6 @@
                 str[i] = 'not a nucleotide.';
         }
     }
-    console.log(str);
     return str;
  }
 
