@@ -1,23 +1,40 @@
-body {
-    margin: 60px 0;
-    background-color: lightgray;
+html {
+    height: 100%;
 }
-#quote-container {
+body {
+    height: 100%;
+    padding: 60px 0;
+    background-color: #bcadff;
+    /*background-color: #b379ff;*/
+    /*background: linear-gradient(45deg, #63abd8, #8c81d3);*/
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.quote-container {
     background-color: #fff;
     border-radius: 3px;
     padding: 20px;
     color: #000;
 }
-#tweet {
+.refresh-btn {
+    width: 45px;
+    text-align: center;
+}
+.tweet-btn {
+    width: 45px;
+    text-align: center;
     background-color: rgb(29, 161, 243);
     color: white;
+}
+.tweet-btn:hover {
+    background-color: rgb(29, 161, 243);
 }
 blockquote {
     border: none;
     padding: 0;
     margin: 60px 0;
 }
-#hoefler {
+.hoefler-quote {
     margin: 30px 0;
     opacity: .05;
 }
