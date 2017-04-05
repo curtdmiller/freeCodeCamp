@@ -191,7 +191,7 @@ function weatherIconFromID(id) {
         }
     } else {
         /* nighttime icons */
-        switch (currentConditions) {
+        switch (id) {
             case 800: // clear
             case 951: // calm to breeze
             case 952:
