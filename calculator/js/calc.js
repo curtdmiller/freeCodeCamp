@@ -35,6 +35,9 @@ $(document).ready(function(){
             if (dec > sigfig) { // if the current number has more decimals than sig fig (all numbers in expression)
                 sigfig = dec;
             }
+        } else if (num === '0') {
+            num = '';
+            curExpr = curExpr.slice(0, -1);
         }
         num += $(this).attr('value'); // add button value
         curExpr += $(this).attr('value');
@@ -55,7 +58,7 @@ $(document).ready(function(){
         }
     });
     $('.op').click(function(){
-        if (num != ''){ // only push to expr if num has been entered and it is not a holdover result from last expression
+        if (num !== ''){ // only push to expr if num has been entered and it is not a holdover result from last expression
             expr.push(num);
             expr.push($(this).attr('value')); // push operator into expression array
             num = '';
@@ -63,6 +66,7 @@ $(document).ready(function(){
             $('.expr').text(curExpr);
             isDec = false; // reset isDec tracker
             dec = 0; // reset current number decimal count
+            isRollover = false;
         }
     });
     $('.eq').click(function(){
@@ -82,7 +86,7 @@ $(document).ready(function(){
                 result = operation(parseInt(expr[0]), parseInt(expr[2]));
             }
             expr.splice(0,3); // remove the first three items
-            expr.unshift(result) // add result to the beginning for the next operation
+            expr.unshift(result); // add result to the beginning for the next operation
         }
         expr.shift(); // remove result from expr for next expr
         num = result; // set num to result for next expr if not cleared
@@ -99,22 +103,18 @@ function operator(op) {
         return function(a,b){
             return a + b;
         }
-        break;
         case '-':
         return function(a,b){
             return a - b;
         }
-        break;
         case '*':
         return function(a,b){
             return a * b;
         }
-        break;
         case '/':
         return function(a,b){
             return a / b;
         }
-        break;
         default:
         console.log('error!');
     }
