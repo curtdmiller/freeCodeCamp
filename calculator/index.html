@@ -1,12 +1,45 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Calculator</title>
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/styles.css">
-    </head>
-    <body>
-
-    </body>
+<head>
+    <meta charset="utf-8">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="calculator">
+        <div class="screen">
+            <h3>0</h3>
+            <p class="expr"></p>
+        </div>
+        <div class="button-container">
+            <div class="operations">
+                <button type="button" name="divide" value="/" class="op">&divide;</button>
+                <button type="button" name="multiply" value="*" class="op">&times;</button>
+                <button type="button" name="subtract" value="-" class="op">&minus;</button>
+                <button type="button" name="add" value="+" class="op">&plus;</button>
+                <button type="button" name="equals" value="=" class="eq">=</button>
+            </div>
+            <div class="top-row">
+                <button type="button" name="all-clear" class="all-clear">AC</button>
+                <button type="button" name="clear" class="clear">C</button>
+            </div>
+            <div class="numpad">
+                <button type="button" name="7" value="7" class="num">7</button>
+                <button type="button" name="8" value="8" class="num">8</button>
+                <button type="button" name="9" value="9" class="num">9</button>
+                <button type="button" name="4" value="4" class="num">4</button>
+                <button type="button" name="5" value="5" class="num">5</button>
+                <button type="button" name="6" value="6" class="num">6</button>
+                <button type="button" name="1" value="1" class="num">1</button>
+                <button type="button" name="2" value="2" class="num">2</button>
+                <button type="button" name="3" value="3" class="num">3</button>
+                <button type="button" name="0" value="0" class="zero num">0</button>
+                <button type="button" name="dot" value="." class="dot">.</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="js/calc.js" charset="utf-8"></script>
+</body>
 </html>
