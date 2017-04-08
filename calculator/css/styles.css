@@ -1,10 +1,10 @@
 /* apply a natural box layout model to all elements, but allowing components to change */
 /* https://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
 html {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 *, *:before, *:after {
-  box-sizing: inherit;
+    box-sizing: inherit;
 }
 body {
     padding-top: 60px;
@@ -14,7 +14,7 @@ body {
     width: 270px;
     margin: 0 auto;
     padding-top: 5px;
-    background: #42f4c8;
+    background: #8c81d3; /* fallback */
     background: linear-gradient(#42f4c8, #63abd8, #8c81d3);
 }
 .screen {
@@ -22,7 +22,7 @@ body {
     height: 70px;
     background: white;
 }
-.screen h3 {
+h3 {
     margin: 5px;
     padding: 0;
     font-family: Courier, monospace;
@@ -60,8 +60,10 @@ button {
     margin: 3px 0;
 
     border: white solid 2px;
+    border-color: white; /* fallback */
     border-color: rgba(255,255,255,.7);
     border-radius: 25px;
+    background-color: #8c81d3; /* fallback */
     background-color: rgba(255,255,255,0);
     text-align: center;
 
@@ -73,10 +75,10 @@ button:hover {
     color: black;
     cursor: pointer;
 }
-button.zero {
+.zero {
     width: 104px;
 }
-button.clear {
+.clear {
     width: 104px;
 }
 button.eq {
@@ -84,6 +86,7 @@ button.eq {
     color: #8c81d3;
 }
 button.eq:hover {
+    background-color: #8c81d3; /* fallback */
     background-color: rgba(255,255,255,0);
     color: white;
 }
