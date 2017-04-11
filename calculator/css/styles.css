@@ -55,9 +55,11 @@ h3 {
     width: 162px;
 }
 button {
+    display: inline-block;
     width: 50px;
     height: 50px;
     margin: 3px 0;
+    padding: 0;
 
     border: white solid 2px;
     border-color: white; /* fallback */
