@@ -1,40 +1,74 @@
 var squares = document.getElementsByTagName('td'),
+    tokenModal = document.getElementsByClassName('token-modal')[0],
+    xButton = document.getElementById('x-button'),
+    oButton = document.getElementById('o-button'),
     turn = 0,
     availableMoves = [0,1,2,3,4,5,6,7,8],
-    xMoves = [],
-    oMoves = [],
-    timer;
+    userMoves = [],
+    compMoves = [],
+    userToken,
+    compToken;
 
-function takeTurn(position) {
-    turn++;
-    if (availableMoves.indexOf(position) !== -1) { // if move still available
-        if (turn % 2) { // if odd
-            squares[position].firstChild.classList.toggle("fa-times"); // mark it
-            availableMoves.splice(availableMoves.indexOf(position), 1); // remove from available
-            xMoves.push(position); // add to x moves
-            if (checkForWin(xMoves)) { // check if game is over
-                console.log("x win");
-                availableMoves = []; // discontinue play
-                timer = setTimeout(reset, 2000); // delay clear to relish results.
-            } else if (availableMoves.length === 0) { // if no more moves and no winner
-                console.log('tie');
-                timer = setTimeout(reset, 2000); // delay clear to relish results.
-            }
-        } else { // even
-            squares[position].firstChild.classList.toggle("fa-circle-o");
-            availableMoves.splice(availableMoves.indexOf(position), 1);
-            oMoves.push(position);
-            if (checkForWin(oMoves)) {
-                console.log("o win");
-                availableMoves = [];
-                timer = setTimeout(reset, 2000);
-            } else if (availableMoves.length === 0) {
-                console.log('tie');
-                timer = setTimeout(reset, 2000); // delay clear to relish results.
-            }
+// EVENTS SETUP
+// callback factory to avoid closure inside for loop
+function makeEventCallback(index) {
+    return function(){
+        if (availableMoves.indexOf(index) !== -1) { // if move still available
+            userTurn(index);
+        } else {
+            console.log("move not available");
         }
+    }
+}
+for (var i = 0; i < squares.length; i++){
+    squares[i].onclick = makeEventCallback(i);
+}
+xButton.addEventListener("click", function(){
+    reset();
+    userToken = "fa-times";
+    compToken = "fa-circle-o";
+    tokenModal.style.display = "none";
+});
+oButton.addEventListener("click", function(){
+    reset();
+    userToken = "fa-circle-o";
+    compToken = "fa-times";
+    tokenModal.style.display = "none";
+    compTurn();
+});
+
+// GAME FUNCTIONS
+function mark(position, token){
+    squares[position].firstChild.classList.toggle(token); // mark it
+}
+function userTurn(position) {
+    mark(position, userToken) // mark it
+    availableMoves.splice(availableMoves.indexOf(position), 1); // remove from available
+    userMoves.push(position);
+    if (checkForWin(userMoves)) { // check if game is over
+        console.log("you win!");
+        // availableMoves = []; // discontinue play
+        tokenModal.style.display = "block";
+    } else if (availableMoves.length === 0) { // if no more moves and no winner
+        console.log('tie');
+        tokenModal.style.display = "block";
     } else {
-        console.log("move not available");
+        compTurn();
+    }
+}
+function compTurn(){
+    // currently random
+    var pos = availableMoves[Math.floor(Math.random() * availableMoves.length)];
+    mark(pos, compToken);
+    availableMoves.splice(availableMoves.indexOf(pos), 1); // remove from available
+    compMoves.push(pos);
+    if (checkForWin(compMoves)) { // check if game is over
+        console.log("computer wins!");
+        availableMoves = []; // discontinue play
+        tokenModal.style.display = "block";
+    } else if (availableMoves.length === 0) { // if no more moves and no winner
+        console.log('tie');
+        tokenModal.style.display = "block";
     }
 }
 function checkForWin(moves){
@@ -51,20 +85,11 @@ function checkForWin(moves){
     return false;
 }
 
-// callback factory to avoid closure inside for loop
-function makeEventCallback(index) {
-    return function(){
-        takeTurn(index);
-    }
-}
-for (var i = 0; i < squares.length; i++){
-    squares[i].onclick = makeEventCallback(i);
-}
 function reset(){
     turn = 0;
     availableMoves = [0,1,2,3,4,5,6,7,8];
-    xMoves = [];
-    oMoves = [];
+    userMoves = [];
+    compMoves = [];
     for (var i = 0; i < squares.length; i++){
         squares[i].firstChild.classList = "fa";
     }
