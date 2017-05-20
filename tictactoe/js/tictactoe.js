@@ -3,6 +3,7 @@ var squares = document.getElementsByTagName('td'),
     xButton = document.getElementById('x-button'),
     oButton = document.getElementById('o-button'),
     stat = document.getElementsByClassName('status')[0],
+    warning = document.getElementsByClassName('warning')[0],
     game = new Game(),
     userToken,
     compToken;
@@ -12,12 +13,12 @@ var squares = document.getElementsByTagName('td'),
 function makeEventCallback(index) {
     return function(){
         if (game.turn === "comp"){
-            UI.updateStatus("It's not your turn!");
+            UI.warn("It's not your turn!");
             // console.log("not your turn");
         } else if (game.availableMoves.indexOf(index) !== -1) { // if move still available
             userTurn(index);
         } else {
-            UI.updateStatus("Not available, pick an empty square.");
+            UI.warn("Not available, pick an empty square.");
             // console.log("move not available");
         }
     }
@@ -61,11 +62,15 @@ var UI = (function(){
     var modalToggle = function (){
         tokenModal.style.display = tokenModal.style.display === "none" ? "block" : "none";
     }
+    var warn = function(w) {
+        warning.innerHTML = w;
+    }
     return {
         mark: mark,
         reset: reset,
         modalToggle: modalToggle,
-        updateStatus: updateStatus
+        updateStatus: updateStatus,
+        warn: warn
     }
 })();
 
@@ -150,6 +155,7 @@ function userTurn(position) {
     }
 }
 function compTurn(){
+    UI.warn("");
     var mmresults = [];
     // iterate through all possible next moves
     for (var i = 0; i < game.availableMoves.length; i++){
@@ -186,7 +192,10 @@ function compTurn(){
     game.update(pos);
     if (game.isOver()){
         UI.updateStatus(game.result);
-        setTimeout(UI.modalToggle, 1000);
+        setTimeout(function(){
+            UI.warn("");
+            UI.modalToggle();
+        }, 1000);
     } else {
         game.switchTurns();
         UI.updateStatus("Your turn");

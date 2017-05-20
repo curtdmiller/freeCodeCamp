@@ -17,6 +17,12 @@ body {
     font-size: 1em;
     text-align: center;
 }
+.warning {
+    font-family: Helvetica, sans-serif;
+    font-size: .8em;
+    font-style: italic;
+    text-align: center;
+}
 .board-container {
     padding: 20px 0;
 }
@@ -68,6 +74,10 @@ td {
 .token-modal-inset p {
     margin: 20px auto 0;
     font-size: 1.2em;
+}
+.token-modal-inset p.small {
+    margin: 0 auto;
+    font-size: .8em;
 }
 button {
     width: 80px;
