@@ -142,7 +142,6 @@ function userTurn(position) {
     game.update(position);
     if (game.isOver()){
         UI.updateStatus(game.result);
-        console.log(game.score());
         setTimeout(UI.modalToggle, 1000);
     } else {
         game.switchTurns();
@@ -174,8 +173,15 @@ function compTurn(){
     //     console.log(el.pos + ", score: " + el.score);
     // })
     // console.log('---------------------');
-    // pick the move with the highest minimax value (computer is maximizing player)
-    var pos = mmresults[0].pos;
+
+    // find last member of the sorted array which has an equivalent score to the first
+    var lastEQIndex = mmresults.length - 1;
+    while (mmresults[lastEQIndex].score !== mmresults[0].score){
+        lastEQIndex--;
+    }
+    var choice = Math.floor(Math.random() * lastEQIndex); // choose a random equivalent index
+    var pos = mmresults[choice].pos; // play the position stored at chosen index
+
     UI.mark(pos, compToken);
     game.update(pos);
     if (game.isOver()){
