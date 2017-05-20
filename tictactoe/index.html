@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic Tac Toe</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/styles.css">
@@ -11,9 +12,9 @@
     <div class="board-container">
         <div class="token-modal">
             <div class="token-modal-inset">
-            <p>Pick a token</p>
-            <button type="button" name="X" id="x-button">X</button>
-            <button type="button" name="O" id="o-button">O</button>
+                <p>Pick a token</p>
+                <button class="btn-red" type="button" name="X" id="x-button"><i class="fa fa-lg fa-times" aria-hidden="true"></i></button>
+                <button class="btn-blue" type="button" name="O" id="o-button"><i class="fa fa-lg fa-circle" aria-hidden="true"></i></button>
             </div>
         </div>
         <table>
@@ -33,6 +34,9 @@
                 <td><i class="fa" aria-hidden="true"></i></td>
             </tr>
         </table>
+    </div>
+    <div class="status-container">
+        <p class="status" id="stat">...</p>
     </div>
     <script src="js/tictactoe.js" charset="utf-8"></script>
 </body>
