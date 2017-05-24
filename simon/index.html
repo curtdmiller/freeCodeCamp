@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Simon</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/sstyles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="simon">
+            <div class="disc">
+                <div class="button-row">
+                    <label for="start">Start</label>
+                    <button type="button" name="start" id="start" class="start-btn"></button>
+                </div>
+                <div class="button-row">
+                    <label for="strict-check">Strict</label>
+                    <input type="checkbox" name="strict" id="strict-check" value="">
+                </div>
+                <div class="button-row">
+                    <label for="steps">Steps</label>
+                    <div class="step-counter">
+                        <p class="status-steps">--</p>
+                    </div>
+                </div>
+            </div>
+            <div class="pad-row">
+                <div class="pad-green">
+                </div>
+                <div class="pad-red">
+                </div>
+            </div>
+            <div class="pad-row">
+                <div class="pad-yellow">
+                </div>
+                <div class="pad-blue">
+                </div>
+            </div>
+        </div>
+        <div class="status">
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/simon.js" charset="utf-8"></script>
+</body>
+</html>

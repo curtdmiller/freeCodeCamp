@@ -1,0 +1,171 @@
+body {
+  background: url("../img/galaxy.jpg") no-repeat center fixed;
+  background-color: #000;
+  background-size: cover; }
+
+.container {
+  text-align: center; }
+
+.simon {
+  position: relative;
+  margin-top: 100px;
+  padding: 10px;
+  display: inline-block;
+  background-color: #555;
+  border-radius: 50%;
+  overflow: scroll; }
+
+.disc {
+  position: absolute;
+  padding: 5px;
+  border-radius: 50%;
+  border: solid #555 5px;
+  width: 100px;
+  height: 100px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  z-index: 900;
+  font-family: Helvetica, sans-serif;
+  font-weight: 200; }
+  .disc label {
+    display: inline-block;
+    font-size: .8em;
+    vertical-align: middle; }
+  .disc .start-btn {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 5px 5px;
+    vertical-align: middle;
+    border: solid #00b359 1px;
+    border-radius: 20px;
+    background-color: #00ff80;
+    box-shadow: 0 2px 0 #00b359; }
+  .disc .start-btn:hover {
+    cursor: pointer; }
+  .disc .start-btn:active {
+    transform: translateY(2px); }
+  .disc .step-counter {
+    margin: 0 auto;
+    width: 40px;
+    padding: 1px 0;
+    border: 2px solid #555;
+    border-radius: 3px;
+    background-color: #fff; }
+    .disc .step-counter p {
+      margin: 0;
+      padding: 0;
+      font-weight: 400; }
+
+.disc-blink {
+  background-color: red; }
+
+.pad-row {
+  text-align: center; }
+
+.pad, .pad-green, .pad-red, .pad-blue, .pad-yellow {
+  overflow: scroll;
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  position: relative; }
+
+.pad:hover, .pad-green:hover, .pad-red:hover, .pad-blue:hover, .pad-yellow:hover {
+  cursor: pointer; }
+
+.pad-green {
+  background-color: #33cc00;
+  border-radius: 100px 0 0 0; }
+
+.green-blink {
+  background-color: #40ff00; }
+
+.pad-red {
+  background-color: #df2050;
+  border-radius: 0 100px 0 0; }
+
+.red-blink {
+  background-color: #ff0040; }
+
+.pad-blue {
+  background-color: #0052cc;
+  border-radius: 0 0 100px 0; }
+
+.blue-blink {
+  background-color: #0066ff; }
+
+.pad-yellow {
+  background-color: #dfdf20;
+  border-radius: 0 0 0 100px; }
+
+.yellow-blink {
+  background-color: #ffff00; }
+
+@media screen and (min-width: 425px) {
+  .disc {
+    padding: 0;
+    width: 150px;
+    height: 150px;
+    border-width: 10px; }
+    .disc label {
+      display: block; }
+    .disc .start-btn {
+      padding: 10px 10px;
+      height: 10px;
+      width: 10px;
+      border-radius: 20px; }
+    .disc .button-row {
+      display: inline-block;
+      position: relative;
+      top: 50px;
+      margin: 0 3px;
+      vertical-align: top; }
+    .disc .step-counter {
+      width: 40px;
+      padding: 5px 0; }
+      .disc .step-counter p {
+        margin: 0;
+        padding: 0; }
+
+  .pad, .pad-green, .pad-red, .pad-blue, .pad-yellow {
+    width: 150px;
+    height: 150px;
+    margin: 2.5px; }
+
+  .pad-green {
+    border-radius: 150px 0 0 0; }
+
+  .pad-red {
+    border-radius: 0 150px 0 0; }
+
+  .pad-blue {
+    border-radius: 0 0 150px 0; }
+
+  .pad-yellow {
+    border-radius: 0 0 0 150px; } }
+@media screen and (min-width: 768px) {
+  .disc {
+    width: 200px;
+    height: 200px; }
+    .disc .button-row {
+      top: 80px;
+      margin: 0 5px; }
+
+  .pad, .pad-green, .pad-red, .pad-blue, .pad-yellow {
+    width: 200px;
+    height: 200px; }
+
+  .pad-green {
+    border-radius: 200px 0 0 0; }
+
+  .pad-red {
+    border-radius: 0 200px 0 0; }
+
+  .pad-blue {
+    border-radius: 0 0 200px 0; }
+
+  .pad-yellow {
+    border-radius: 0 0 0 200px; } }
+
+/*# sourceMappingURL=styles.css.map */

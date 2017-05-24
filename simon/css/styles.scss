@@ -1,0 +1,213 @@
+// sizes
+$pad-size-sm: 100px;
+$disc-size-sm: 100px;
+$pad-size-md: 150px;
+$disc-size-md: 150px;
+$pad-size: 200px;
+$disc-size: 200px;
+$border-width-sm: 5px;
+$border-width: 10px;
+
+// colors
+$dark-background: #555;
+$green: #40ff00;
+$green-dark: #33cc00;
+$yellow: #ffff00;
+$yellow-dark:#dfdf20;
+$blue: #0066ff;
+$blue-dark: #0052cc;
+$red: #ff0040;
+$red-dark: #df2050;
+body {
+    background: url("../img/galaxy.jpg") no-repeat center fixed;
+    background-color: #000;
+    background-size: cover;
+}
+.container {
+    text-align: center;
+}
+.simon {
+    position: relative;
+    margin-top: 100px;
+    padding: 10px;
+    display: inline-block;
+    background-color: $dark-background;
+    border-radius: 50%;
+    overflow: scroll;
+}
+.disc {
+    position: absolute;
+    padding: 5px;
+    border-radius: 50%;
+    border: solid $dark-background $border-width-sm;
+    width: $disc-size-sm;
+    height: $disc-size-sm;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    z-index: 900;
+    font-family: Helvetica, sans-serif;
+    font-weight: 200;
+    label {
+        display: inline-block;
+        font-size: .8em;
+        vertical-align: middle;
+    }
+    .start-btn {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 5px 5px;
+        vertical-align: middle;
+        // height: 5px;
+        // width: 5px;
+        border: solid #00b359 1px;
+        border-radius: 20px;
+        background-color: #00ff80;
+        box-shadow: 0 2px 0 #00b359;
+    }
+    .start-btn:hover {
+        cursor: pointer;
+    }
+    .start-btn:active {
+        transform: translateY(2px);
+    }
+    .step-counter {
+        margin: 0 auto;
+        width: 40px;
+        padding: 1px 0;
+        border: 2px solid #555;
+        border-radius: 3px;
+        background-color: #fff;
+        p {
+            margin: 0;
+            padding: 0;
+            font-weight: 400;
+        }
+    }
+}
+.disc-blink {
+    background-color: red;
+}
+.pad-row {
+    text-align: center;
+}
+.pad {
+    overflow: scroll;
+    width: $pad-size-sm;
+    height: $pad-size-sm;
+    display: inline-block;
+    position: relative;
+}
+.pad:hover {
+    cursor: pointer;
+}
+.pad-green {
+    @extend .pad;
+    background-color: $green-dark;
+    border-radius: $pad-size-sm 0 0 0;
+}
+.green-blink {
+    background-color: $green;
+}
+.pad-red {
+    @extend .pad;
+    background-color: $red-dark;
+    border-radius: 0 $pad-size-sm 0 0;
+}
+.red-blink {
+    background-color: $red;
+}
+.pad-blue {
+    @extend .pad;
+    background-color: $blue-dark;
+    border-radius: 0 0 $pad-size-sm 0;
+}
+
+.blue-blink {
+    background-color: $blue;
+}
+.pad-yellow {
+    @extend .pad;
+    background-color: $yellow-dark;
+    border-radius: 0 0 0 $pad-size-sm;
+}
+.yellow-blink {
+    background-color: $yellow;
+}
+
+@media screen and (min-width: 425px) {
+    .disc {
+        padding: 0;
+        width: $disc-size-md;
+        height: $disc-size-md;
+        border-width: $border-width;
+        label {
+            display: block;
+        }
+        .start-btn {
+            padding: 10px 10px;
+            height: 10px;
+            width: 10px;
+            border-radius: 20px;
+        }
+        .button-row {
+            display: inline-block;
+            position: relative;
+            top: 50px;
+            margin: 0 3px;
+            vertical-align: top;
+        }
+        .step-counter {
+            width: 40px;
+            padding: 5px 0;
+            p {
+                margin: 0;
+                padding: 0;
+            }
+        }
+    }
+    .pad {
+        width: $pad-size-md;
+        height: $pad-size-md;
+        margin: $border-width-sm / 2;
+    }
+    .pad-green {
+        border-radius: $pad-size-md 0 0 0;
+    }
+    .pad-red {
+        border-radius: 0 $pad-size-md 0 0;
+    }
+    .pad-blue {
+        border-radius: 0 0 $pad-size-md 0;
+    }
+    .pad-yellow {
+        border-radius: 0 0 0 $pad-size-md;
+    }
+}
+@media screen and (min-width: 768px) {
+    .disc {
+        width: $disc-size;
+        height: $disc-size;
+        .button-row {
+            top: 80px;
+            margin: 0 5px;
+        }
+    }
+    .pad {
+        width: $pad-size;
+        height: $pad-size;
+    }
+    .pad-green {
+        border-radius: $pad-size 0 0 0;
+    }
+    .pad-red {
+        border-radius: 0 $pad-size 0 0;
+    }
+    .pad-blue {
+        border-radius: 0 0 $pad-size 0;
+    }
+    .pad-yellow {
+        border-radius: 0 0 0 $pad-size;
+    }
+}
