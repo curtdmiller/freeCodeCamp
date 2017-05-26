@@ -1,14 +1,26 @@
 var strict = false;
+
 $(document).ready(function() {
     $('#start').click(Sequence.start);
     $('#strict-check').click(function(){
         strict = strict ? false : true;
     })
-    UI.enablePadClick();
 })
 
 var UI = (function(){
+    var greenAudio = document.getElementById('green-audio'),
+        redAudio = document.getElementById('red-audio'),
+        yellowAudio = document.getElementById('yellow-audio'),
+        blueAudio = document.getElementById('blue-audio');
+
+    var stopAudio = function(audio){
+        audio.pause();
+        audio.currentTime = 0;
+    }
+
     var greenBlink = function(done){
+        stopAudio(greenAudio); // stop audio in case it is still playing to allow replay
+        greenAudio.play();
         $('.pad-green').toggleClass('green-blink');
         setTimeout(function(){
             $('.pad-green').toggleClass('green-blink');
@@ -19,18 +31,9 @@ var UI = (function(){
             }, 100);
         }, 500);
     }
-    var blueBlink = function(done){
-        $('.pad-blue').toggleClass('blue-blink');
-        setTimeout(function(){
-            $('.pad-blue').toggleClass('blue-blink');
-            setTimeout(function(){
-                if (typeof done === "function") {
-                    done(); // call next blink function
-                }
-            }, 100);
-        }, 500);
-    }
     var redBlink = function(done){
+        stopAudio(redAudio);
+        redAudio.play();
         $('.pad-red').toggleClass('red-blink');
         setTimeout(function(){
             $('.pad-red').toggleClass('red-blink');
@@ -41,7 +44,22 @@ var UI = (function(){
             }, 100);
         }, 500);
     }
+    var blueBlink = function(done){
+        stopAudio(blueAudio);
+        blueAudio.play();
+        $('.pad-blue').toggleClass('blue-blink');
+        setTimeout(function(){
+            $('.pad-blue').toggleClass('blue-blink');
+            setTimeout(function(){
+                if (typeof done === "function") {
+                    done(); // call next blink function
+                }
+            }, 100);
+        }, 500);
+    }
     var yellowBlink = function(done){
+        stopAudio(yellowAudio);
+        yellowAudio.play();
         $('.pad-yellow').toggleClass('yellow-blink');
         setTimeout(function(){
             $('.pad-yellow').toggleClass('yellow-blink');
@@ -61,6 +79,23 @@ var UI = (function(){
             }
         }, 500)
     }
+    var winDisplay = function(){
+        $('.pad-green').toggleClass('green-blink');
+        $('.pad-red').toggleClass('red-blink');
+        $('.pad-yellow').toggleClass('yellow-blink');
+        $('.pad-blue').toggleClass('blue-blink');
+        var count = 0;
+        var winInterval = setInterval(function(){
+            $('.pad-green').toggleClass('green-blink');
+            $('.pad-red').toggleClass('red-blink');
+            $('.pad-yellow').toggleClass('yellow-blink');
+            $('.pad-blue').toggleClass('blue-blink');
+            count++;
+            if (count === 9) {
+                clearInterval(winInterval);
+            }
+        }, 500);
+    }
     var updateSteps = function(stepCount){
         $('.status-steps').html(stepCount);
     }
@@ -69,24 +104,32 @@ var UI = (function(){
             $(this).toggleClass('green-blink');
             Sequence.checkInput(0);
         }).mousedown(function(){
+            stopAudio(greenAudio); // in case it is still playing on next click
+            greenAudio.play();
             $(this).toggleClass('green-blink');
         });
         $('.pad-red').mouseup(function(){
             $(this).toggleClass('red-blink');
             Sequence.checkInput(1);
         }).mousedown(function(){
+            stopAudio(redAudio);
+            redAudio.play();
             $(this).toggleClass('red-blink');
         });
         $('.pad-blue').mouseup(function(){
             $(this).toggleClass('blue-blink');
             Sequence.checkInput(2);
         }).mousedown(function(){
+            stopAudio(blueAudio);
+            blueAudio.play();
             $(this).toggleClass('blue-blink');
         });
         $('.pad-yellow').mouseup(function(){
             $(this).toggleClass('yellow-blink');
             Sequence.checkInput(3);
         }).mousedown(function(){
+            stopAudio(yellowAudio);
+            yellowAudio.play();
             $(this).toggleClass('yellow-blink');
         });
     }
@@ -118,6 +161,7 @@ var UI = (function(){
         blueBlink: blueBlink,
         yellowBlink: yellowBlink,
         discBlink: discBlink,
+        winDisplay: winDisplay,
         updateSteps: updateSteps,
         enablePadClick: enablePadClick,
         disablePadClick: disablePadClick,
@@ -169,23 +213,31 @@ var Sequence = (function(){
         if(input === seq[inputStep]) { // if user input matches the current place in sequence
             inputStep++; // increment to check next input
             if (inputStep === seq.length) { // if that was last in sequence
-                UI.disablePadClick();
-                inputStep = 0;
-                addStep();
-                setTimeout(function(){
-                    displaySeq();
-                },500)
+                if (inputStep === 20) {
+                    UI.updateSteps('WIN');
+                    UI.winDisplay();
+                } else {
+                    UI.disablePadClick();
+                    inputStep = 0;
+                    addStep();
+                    setTimeout(function(){
+                        displaySeq();
+                    }, 1000)
+                }
             }
         } else {
             UI.disablePadClick();
             // if strict mode, game over
             if (strict){
-                UI.discBlink(start);
+                UI.discBlink();
+                setTimeout(function(){
+                    start();
+                }, 1000);
             } else {
                 inputStep = 0;
                 setTimeout(function(){
                     UI.discBlink(displaySeq);
-                },500)
+                },1000);
             }
         }
     }
